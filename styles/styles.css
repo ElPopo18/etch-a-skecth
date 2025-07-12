@@ -1,0 +1,16 @@
+.container{
+    box-sizing: border-box;
+    border: 1px solid red;
+    display: flex;
+    margin: auto;
+    width: 902px;
+    height: 902px;
+    flex-wrap: wrap;
+}
+
+.item {
+  border: 1px solid black;
+  box-sizing: border-box;
+  width: 56.25px;
+  height: 56.25px;
+}
