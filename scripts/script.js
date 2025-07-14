@@ -3,11 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
     function assignGrid(){
         size = window.prompt("Enter the size of the grid (between 1 and 100)");
 
+        if(size > 100){
+            size = window.prompt("Please enter a valid size (between 1 and 100)");
+        }
+
         for(let j = 0; j < grid; j++){
             container.removeChild(container.firstElementChild);
         }
-
-        console.log(container.firstElementChild);
 
         grid = parseInt(size);
 
@@ -32,8 +34,16 @@ document.addEventListener('DOMContentLoaded', function () {
             item.style.height = dimensions;
 
             item.addEventListener("mouseover", (e) => {
-                item.style.backgroundColor = "black";
-                console.log(item);
+
+                function generateRandomInteger(min, max){
+                    let color = Math.floor(Math.random() * (max - min + 1)) + min;
+                    return color;
+                }
+
+                const r = generateRandomInteger(0, 255);
+                const g = generateRandomInteger(0, 255);
+                const b = generateRandomInteger(0, 255);
+                item.style.backgroundColor = `rgb(${[r,g,b].join(',')})`;
             })
         }
     }
