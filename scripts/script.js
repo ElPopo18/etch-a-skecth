@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         for(let j = 0; j < grid; j++){
+            /* This will delete the current grid */
             container.removeChild(container.firstElementChild);
         }
 
@@ -32,18 +33,29 @@ document.addEventListener('DOMContentLoaded', function () {
             item.style.border = '1px solid black';
             item.style.width = dimensions;
             item.style.height = dimensions;
+            let counter = 0;
 
             item.addEventListener("mouseover", (e) => {
-
-                function generateRandomInteger(min, max){
-                    let color = Math.floor(Math.random() * (max - min + 1)) + min;
-                    return color;
+                
+                counter++;
+                if(counter < 10){
+                    item.style.opacity = `0.${counter}`;
+                }else if(counter == 10){
+                    item.style.opacity = "1";
                 }
 
-                const r = generateRandomInteger(0, 255);
-                const g = generateRandomInteger(0, 255);
-                const b = generateRandomInteger(0, 255);
-                item.style.backgroundColor = `rgb(${[r,g,b].join(',')})`;
+                if(counter == 1){
+                    function generateRandomInteger(min, max){
+                        let color = Math.floor(Math.random() * (max - min + 1)) + min;
+                        return color;
+                    }
+
+                    const r = generateRandomInteger(0, 255);
+                    const g = generateRandomInteger(0, 255);
+                    const b = generateRandomInteger(0, 255);
+                    item.style.backgroundColor = `rgb(${[r,g,b].join(',')})`;
+                }
+
             })
         }
     }
@@ -54,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* The default size of the grid */
     let defaultSize = 16;
     let grid = Math.pow(defaultSize, 2); 
-
+    
     createGrid(grid, defaultSize);
 
     button.addEventListener("click", assignGrid);
