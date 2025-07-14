@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         item.classList.add("item", "item-" + i);
         container.appendChild(item);
+
+        item.addEventListener("mouseover", (e) => {
+        item.style.backgroundColor = "black";
+        })
     }
+
+
 
 })
