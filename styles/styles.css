@@ -1,5 +1,15 @@
-.container{
+*,
+*::before,
+*::after{
     box-sizing: border-box;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
     border: 1px solid red;
     display: flex;
     margin: auto;
@@ -8,9 +18,17 @@
     flex-wrap: wrap;
 }
 
-.item {
-  border: 1px solid black;
-  box-sizing: border-box;
-  width: 56.25px;
-  height: 56.25px;
+.container2{
+    display: flex;
+    margin: auto;
+    width: 900px;
+    height: 900px;
+    flex-wrap: wrap;
+}
+
+
+.button{
+  display: flex;
+  margin: 10px auto;
+  padding: 6px 12px;
 }
