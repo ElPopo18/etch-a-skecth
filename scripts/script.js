@@ -1,39 +1,51 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     function assignGrid(){
-        let message = window.prompt("Enter the size of the grid (between 1 and 100)");
-        let totalDivs = parseInt(message);
+        size = window.prompt("Enter the size of the grid (between 1 and 100)");
 
-        totalDivs = Math.pow(totalDivs, 2);
+        for(let j = 0; j < grid; j++){
+            container.removeChild(container.firstElementChild);
+        }
 
-        createGrid(totalDivs, message);
+        console.log(container.firstElementChild);
+
+        grid = parseInt(size);
+
+        grid = Math.pow(grid, 2);
+
+        createGrid(grid, size);
     }
 
-    let container = document.querySelector(".container")
-    const button = document.querySelector(".button");
+     function createGrid(grid, size){
 
-    let grid = Math.pow(16, 2);
-
-    function createGrid(totalDivs, size){
-        size = 900/size;
-        let size2 = `${size}px`;
+        size = 850/size;        /* Is 850 because thats the height and width of the container  */
+        let dimensions = `${size}px`;
         
-        for (let i = 0; i < totalDivs; i++){
+        for (let i = 0; i < grid; i++){
             const item = document.createElement("div");
 
             item.classList.add("item", "item-" + i);
             container.appendChild(item);
 
             item.style.border = '1px solid black';
-            item.style.width = size2;
-            item.style.height = size2;
+            item.style.width = dimensions;
+            item.style.height = dimensions;
 
             item.addEventListener("mouseover", (e) => {
-            item.style.backgroundColor = "black";
-            console.log(item);
-        })
+                item.style.backgroundColor = "black";
+                console.log(item);
+            })
         }
     }
+
+    let container = document.querySelector(".container")
+    const button = document.querySelector(".button");
+
+    /* The default size of the grid */
+    let defaultSize = 16;
+    let grid = Math.pow(defaultSize, 2); 
+
+    createGrid(grid, defaultSize);
 
     button.addEventListener("click", assignGrid);
 
